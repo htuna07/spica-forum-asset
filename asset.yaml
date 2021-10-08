@@ -2,11 +2,11 @@
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: user
+  name: user-bucket
 spec:
   title: User
   description: User of the forum
-  icon: invert_colors
+  icon: account_circle
   primary: nick
   readOnly: false
   history: false
@@ -77,11 +77,11 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: User
+  name: user-bucket
 spec:
   title: User
   description: User of the forum
-  icon: invert_colors
+  icon: account_circle
   primary: nick
   readOnly: false
   history: false
@@ -136,7 +136,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     followers:
       type: relation
       title: followers
@@ -148,7 +148,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     profile_picture:
       type: storage
       title: profile_picture
@@ -176,11 +176,11 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: comment
+  name: comment-bucket
 spec:
   title: Comment
   description: Comment of the Forum
-  icon: invert_colors
+  icon: question_answer
   primary: content
   readOnly: false
   history: false
@@ -209,7 +209,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     likes:
       type: relation
       title: likes
@@ -221,7 +221,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     dislikes:
       type: relation
       title: dislikes
@@ -233,7 +233,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     images:
       type: array
       title: images
@@ -254,7 +254,7 @@ spec:
       primary: nick
       bucket:
         resourceFieldRef:
-          schemaName: comment
+          schemaName: comment-bucket
   acl:
     write: auth._id == document.user.identity_id
     read: true==true
@@ -264,11 +264,11 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: survey
+  name: survey-bucket
 spec:
   title: Survey
   description: Survey of the forum
-  icon: invert_colors
+  icon: quiz
   primary: title
   readOnly: false
   history: false
@@ -283,7 +283,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     title:
       type: string
       title: title
@@ -323,7 +323,7 @@ spec:
             dependent: false
             bucket:
               resourceFieldRef:
-                schemaName: user
+                schemaName: user-bucket
   acl:
     write: auth._id == document.user.identity_id
     read: true==true
@@ -333,11 +333,11 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: title
+  name: title-bucket
 spec:
   title: Title
   description: Title of the forum
-  icon: invert_colors
+  icon: title
   primary: name
   readOnly: false
   history: false
@@ -362,7 +362,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: user
+          schemaName: user-bucket
     comments:
       type: relation
       title: comments
@@ -373,7 +373,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: comment
+          schemaName: comment-bucket
     created_at:
       type: date
       title: date
@@ -390,11 +390,11 @@ spec:
 apiVersion: bucket/v1
 kind: Schema
 metadata:
-  name: category
+  name: category-bucket
 spec:
   title: Category
   description: Category of the Forum
-  icon: invert_colors
+  icon: category
   primary: name
   readOnly: false
   history: false
@@ -415,7 +415,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: title
+          schemaName: title-bucket
     surveys:
       type: relation
       title: surveys
@@ -426,7 +426,7 @@ spec:
       dependent: false
       bucket:
         resourceFieldRef:
-          schemaName: survey
+          schemaName: survey-bucket
     popularity:
       type: number
       title: popularity
